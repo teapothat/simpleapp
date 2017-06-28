@@ -1,15 +1,9 @@
+# Simple app
 # Playing around with docker, mongodb and bottle
 
 ## Requirements
 
 This script runs in docker so you need to have docker installed
-
-# Simple app
-
-Playing around with docker, mongodb small webservice
-
-Uploads data and does a simple search query.
-
 
 ## Requirements
 
@@ -36,8 +30,4 @@ Once inside docker run
     ./starup.sh 
 
 Go to the link displayed in the container to run.
-
-
-
-
 
