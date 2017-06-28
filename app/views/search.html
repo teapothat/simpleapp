@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+<form id="myForm">
+  Search Text:<br>
+  <input type="text" name="text">
+  <br>
+  Before:<br>
+  <input type="text" name="before">
+  <br><br>
+  After:<br>
+  <input type="text" name="after">
+  <br><br>
+  <input type="submit" value="Search" id="search">
+</form>
+
+<table id="results">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+    </tr>
+</table>
+
+
+<script>
+        
+$('#myForm').submit( function(event) {
+    event.preventDefault();
+    $.ajax({
+        url: 'api/v1/search',
+        type: 'post',
+        dataType: 'json',
+        data: $('#myForm').serialize(),
+        success: function(data) {
+            $('#results').empty();
+            $.each(data, function(index, element) {
+                $('#results').append('<tr>' + 
+                    '<td>' + element.title + '</td>' + 
+                    '<td>' + element.description + '</td>' + 
+                    '<td>' + new Date(element.initiated) + '</td>' + 
+                    '</tr>');
+            });
+            
+        }
+    });
+});
+</script>
+
+</body>
+</html>
